@@ -42,35 +42,51 @@ class CardController extends AbstractController
      * @Route("/card/add", name="add_card")
      * @param Request $request
      * @return Response
+     * @throws \Exception
      */
     public function createCard(Request $request){
 
-            // Get all data form
-            $card = new Card();
-            $form = $this->createForm(CardType::class, $card);
-            $form->handleRequest($request);
+        // Get all data form
+        $card = new Card();
+        $form = $this->createForm(CardType::class, $card);
+        $form->handleRequest($request);
 
-            if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted() && $form->isValid()){
 
-                $card->setCreator($this->getUser());
+            // Add User in Card
+            $card->setCreator($this->getUser());
 
-                // Add Cards in database
-                $this->entityManager->persist($card);
-                $this->entityManager->flush();
+            if ($form->get("image")->getData() !== null){
 
+                // Add image file
+                $image = $form->get("image")->getData();
+                $date = new \DateTime();
 
-                // Add notification flash
-                $this->addFlash('notification', "La carte a bien été crée !");
+                $imageName = "card_".$date->format('Y-m-d-H-i-s').".".$image->guessExtension();
+                $image->move($this->getParameter('cards_folder'), $imageName);
 
-                //return $this->redirectToRoute("list_cards");
-                return new Response();
+                $card->setImage($imageName);
+            }
+            else{
+
+                // Set empty value
+                $card->setImage("");
             }
 
+            // Add Cards in database
+            $this->entityManager->persist($card);
+            $this->entityManager->flush();
 
-            return $this->render('layout/form.html.twig',[
-                "form" => $form->createView(),
-                "title" => "Cards",
-                "sub_title" => "Ajouter une carte"
-            ]);
+            return new Response();
+        }
+
+        $cards = $this->cardRepository->findAll();
+
+        return $this->render('layout/form.html.twig',[
+            "form" => $form->createView(),
+            "title" => "Cards",
+            "sub_title" => "Ajouter une carte",
+            'cards' => $cards
+        ]);
     }
 }

@@ -9,9 +9,38 @@
     <div id="form" class="example-wrapper">
         <h1>{{ sub_title }}</h1>
 
-        {{ form_start(form) }}
+        {{ form_start(form, { 'action': path(app.request.attributes.get("_route")), "method" : "POST", "enctype": "multipart/form-data"}) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <h1>{{ title }}</h1>
+
+        <ul>
+            {% if cards is defined %}
+                {% for card in cards %}
+                    <li>{{ card.name }} | PV: {{ card.health }} - ATQ : {{ card.attack }} - Mana : {{ card.mana }} | Faction : {{ card.faction.name }}</li>
+                {% endfor %}
+            {% endif %}
+
+            {% if factions is defined %}
+                {% for faction in factions %}
+                    <li>{{ faction.name }}</li>
+                {% endfor %}
+            {% endif %}
+
+            {% if decks is defined %}
+                {% for deck in decks %}
+                    <li>{{ deck.name }}</li>
+                {% endfor %}
+            {% endif %}
+
+        </ul>
+
     </div>
 
 {% endblock %}

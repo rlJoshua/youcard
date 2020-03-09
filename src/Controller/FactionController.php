@@ -56,16 +56,16 @@ class FactionController extends AbstractController
             $this->entityManager->persist($faction);
             $this->entityManager->flush();
 
-            // Add notification flash
-            $this->addFlash('notification', "La carte a bien été crée !");
-
             return new Response();
         }
+
+        $factions = $this->factionRepository->findAll();
 
         return $this->render('layout/form.html.twig',[
             "form" => $form->createView(),
             "title" => "Factions",
-            "sub_title" => "Ajouter une faction"
+            "sub_title" => "Ajouter une faction",
+            "factions" => $factions
         ]);
     }
 }
