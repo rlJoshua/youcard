@@ -44,10 +44,10 @@
         {% endif %}
 
         {% if decks is defined %}
-            <div class="example-wrapper">
+            <div class="example-wrapper zone">
                 <h1>{{ title }}</h1>
                 {% for deck in decks %}
-                    <li>{{ deck.name }}</li>
+                    <li><a class="link" href="{{ path('get_deck', {id: deck.id}) }}">{{ deck.name }}</a> </li>
                 {% endfor %}
             </div>
         {% endif %}

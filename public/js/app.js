@@ -23,4 +23,9 @@ $(document).ready(function () {
         })
     });
 
+    $('#home_page').on("click", "a", function(e) {
+        e.preventDefault();
+        $("#home_page").load($(this).attr("href"));
+    });
+
 });
