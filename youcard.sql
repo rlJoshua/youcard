@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
 --
--- Host: localhost    Database: youcarte
+-- Host: localhost    Database: youcard
 -- ------------------------------------------------------
 -- Server version	5.7.29-0ubuntu0.18.04.1
 
@@ -39,7 +39,7 @@ CREATE TABLE `card` (
   CONSTRAINT `FK_161498D34448F8DA` FOREIGN KEY (`faction_id`) REFERENCES `faction` (`id`),
   CONSTRAINT `FK_161498D361220EA6` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`),
   CONSTRAINT `FK_161498D384B6B508` FOREIGN KEY (`rarety_id`) REFERENCES `rarety` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `card` (
 
 LOCK TABLES `card` WRITE;
 /*!40000 ALTER TABLE `card` DISABLE KEYS */;
-INSERT INTO `card` VALUES (1,1,1,1,'Iron Man',300,200,100,'card_2020-03-06-17-22-50.jpeg'),(2,1,1,1,'Captain America',100,150,50,'card_2020-03-06-17-27-55.jpeg'),(3,2,1,1,'Thanos',1000,500,250,'card_2020-03-06-17-31-14.jpeg'),(4,3,1,3,'Silvia',50,50,50,''),(5,2,1,2,'Trump',300,1000,300,'card_2020-03-06-17-49-11.png'),(6,1,1,2,'Hawkeye',50,75,50,'card_2020-03-08-21-46-06.jpeg');
+INSERT INTO `card` VALUES (1,1,1,1,'Iron Man',300,200,100,'card_2020-03-06-17-22-50.jpeg'),(2,1,1,1,'Captain America',100,150,50,'card_2020-03-06-17-27-55.jpeg'),(3,2,1,1,'Thanos',1000,500,250,'card_2020-03-06-17-31-14.jpeg'),(4,3,1,3,'Silvia',50,50,50,''),(5,2,1,2,'Trump',300,1000,300,'card_2020-03-06-17-49-11.png'),(6,1,1,2,'Hawkeye',50,75,50,'card_2020-03-08-21-46-06.jpeg'),(7,1,1,1,'Spider-Man',100,100,50,'card_2020-03-08-23-08-01.jpeg'),(8,3,1,3,'Jonh',20,20,10,'');
 /*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `deck` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,6 +72,7 @@ CREATE TABLE `deck` (
 
 LOCK TABLES `deck` WRITE;
 /*!40000 ALTER TABLE `deck` DISABLE KEYS */;
+INSERT INTO `deck` VALUES (5,'Best'),(6,'test');
 /*!40000 ALTER TABLE `deck` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,14 +85,14 @@ DROP TABLE IF EXISTS `deck_card`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `deck_card` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `card_id` int(11) NOT NULL,
-  `deck_id` int(11) NOT NULL,
+  `card_id` int(11) DEFAULT NULL,
+  `deck_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_2AF3DCED4ACC9A20` (`card_id`),
   KEY `IDX_2AF3DCED111948DC` (`deck_id`),
   CONSTRAINT `FK_2AF3DCED111948DC` FOREIGN KEY (`deck_id`) REFERENCES `deck` (`id`),
   CONSTRAINT `FK_2AF3DCED4ACC9A20` FOREIGN KEY (`card_id`) REFERENCES `card` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,6 +101,7 @@ CREATE TABLE `deck_card` (
 
 LOCK TABLES `deck_card` WRITE;
 /*!40000 ALTER TABLE `deck_card` DISABLE KEYS */;
+INSERT INTO `deck_card` VALUES (8,7,6),(20,1,6),(23,7,6),(24,2,6),(28,1,6),(30,1,5),(31,3,5),(32,2,5),(33,1,5),(34,1,5),(35,1,6),(37,7,6);
 /*!40000 ALTER TABLE `deck_card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +116,7 @@ CREATE TABLE `faction` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +125,7 @@ CREATE TABLE `faction` (
 
 LOCK TABLES `faction` WRITE;
 /*!40000 ALTER TABLE `faction` DISABLE KEYS */;
-INSERT INTO `faction` VALUES (1,'Hero'),(2,'Vilain'),(3,'Civil');
+INSERT INTO `faction` VALUES (1,'Hero'),(2,'Vilain'),(3,'Civil'),(4,'Bandit');
 /*!40000 ALTER TABLE `faction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-08 22:26:42
+-- Dump completed on 2020-03-10 22:14:09

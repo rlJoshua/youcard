@@ -4,11 +4,16 @@
     flex-wrap: wrap;
 }
 
+.list-card h1{
+    width: 100%;
+}
+
 #list {
     display: block;
     margin: auto;
     width : 80%;
     padding-bottom: 150px;
+    z-index: 1;
 }
 
 .card {
@@ -62,3 +67,38 @@
     line-height: 50px;
     float: left;
 }
+
+.list-choice-card {
+    width: 100%;
+    display: flex;
+    background-color: rgba(20, 20, 20, 0.9);
+    color: #DDDDDD;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.list-choice{
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+.card-title{
+    width: 100%;
+    text-align: center;
+}
+.img-card-choice{
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+}
+
+
+
+
+
+
+
+
+

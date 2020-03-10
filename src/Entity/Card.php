@@ -60,7 +60,7 @@ class Card
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DeckCard", mappedBy="cards")
+     * @ORM\OneToMany(targetEntity="App\Entity\DeckCard", mappedBy="card")
      */
     private $deckCards;
 
