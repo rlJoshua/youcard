@@ -1,26 +1,55 @@
 <title>YouCard - {{ title }}</title>
-
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
 {% block body %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
+    <div id="list">
 
-    <div id="list" class="example-wrapper">
-        <h1>{{ title }}</h1>
-
-        <ul>
-            {% if cards is defined %}
+        {% if cards is defined %}
+            <h1>{{ title }}</h1>
+            <div class="list-card">
                 {% for card in cards %}
-                    <li>{{ card.name }} | PV: {{ card.health }} - ATQ : {{ card.attack }} - Mana : {{ card.mana }} | Faction : {{ card.faction.name }}</li>
+                    <div class="card" style="{{ card.rarety.color }};
+                           background: linear-gradient(148deg, {{ card.rarety.color }} 0%,
+                            #FFFFFF 35%, #FFFFFF 42%, {{ card.rarety.color }} 84%);">
+                        <div class="cardHeader">
+                            <span>{{ card.name }}</span>
+                            <span>({{ card.faction.name }})</span>
+                        </div>
+                        <div class="cardImage">
+                            {% if card.image is null or card.image is empty %}
+                                <img src="{{ asset('img/empty.jpg') }}" alt="empty">
+                            {% else %}
+                                <img src="{{ asset('uploads/img/') ~ card.image }}" alt="image card">
+                            {% endif %}
+                        </div>
+                        <div class="cardFooter">
+                            <div class="cardNumber" style="background-color:#B03A2E">{{ card.attack }}</div>
+                            <div class="cardNumber" style="background-color:#2E86C1">{{ card.mana }}</div>
+                            <div class="cardNumber" style="background-color:#229954">{{card.health}}</div>
+                        </div>
+                    </div>
                 {% endfor %}
-            {% endif %}
+            </div>
+        {% endif %}
 
-            {% if factions is defined %}
+        {% if factions is defined %}
+            <div class="example-wrapper">
+                <h1>{{ title }}</h1>
                 {% for faction in factions %}
                     <li>{{ faction.name }}</li>
                 {% endfor %}
-            {% endif %}
-        </ul>
+            </div>
+        {% endif %}
+
+        {% if decks is defined %}
+            <div class="example-wrapper">
+                <h1>{{ title }}</h1>
+                {% for deck in decks %}
+                    <li>{{ deck.name }}</li>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

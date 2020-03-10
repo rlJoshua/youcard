@@ -2,10 +2,15 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CardRepository")
+ * @UniqueEntity("name", message="Cette carte existe déjà")
  */
 class Card
 {
@@ -47,6 +52,28 @@ class Card
      * @ORM\JoinColumn(nullable=false)
      */
     private $creator;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DeckCard", mappedBy="cards")
+     */
+    private $deckCards;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Rarety", inversedBy="cards")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $rarety;
+
+    public function __construct()
+    {
+        $this->deckCards = new ArrayCollection();
+    }
     
     public function getId(): ?int
     {
@@ -121,6 +148,61 @@ class Card
     public function setCreator(?User $creator): self
     {
         $this->creator = $creator;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DeckCard[]
+     */
+    public function getDeckCards(): Collection
+    {
+        return $this->deckCards;
+    }
+
+    public function addDeckCard(DeckCard $deckCard): self
+    {
+        if (!$this->deckCards->contains($deckCard)) {
+            $this->deckCards[] = $deckCard;
+            $deckCard->setCard($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDeckCard(DeckCard $deckCard): self
+    {
+        if ($this->deckCards->contains($deckCard)) {
+            $this->deckCards->removeElement($deckCard);
+            // set the owning side to null (unless already changed)
+            if ($deckCard->getCard() === $this) {
+                $deckCard->setCard(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getRarety(): ?Rarety
+    {
+        return $this->rarety;
+    }
+
+    public function setRarety(?Rarety $rarety): self
+    {
+        $this->rarety = $rarety;
 
         return $this;
     }
