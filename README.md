@@ -1,6 +1,14 @@
 # YouCard
-Projet de gestion de cartes à collectionner.
-Dans le carde d'une formation au framework Symfony Avancée.
+Projet de gestion de cartes à collectionner. Dans le carde d'une formation au framework Symfony Avancée.  
+Le but était de faire le site en **One Page** grâce au JQuery.
+
+Le projet à été réalisé avec :
+
+- HTML/CSS
+- PHP/Symfony 5
+- Git 
+- Bootstrap
+- MySQL
 
 ### Installation
 
@@ -8,17 +16,42 @@ Dans le carde d'une formation au framework Symfony Avancée.
 - Créer un base de donnée au nom de **youcard**
 - Mettre à jour la base de donnée avec le script **youcard.sql**
 
-### Accès
+### Accès user
 
 - E-mail : joshua@gmail.com
 - Password : skywalk
-
+ 
 ### Améliorations
 
 - Ajout d'image pour les cartes qui n'ont pas d'images
 - Les images peuvent être vide
 - Affichage de la liste en dessous du formulaire 
 - Ajout de confirmation de **Password**
-- Rareté de **Card**
+- Rareté de **Card** avec les changemens de couleurs selon ça rareté
+- Disposition de l'ajout des cartes dans un deck
 
- 
+
+### Informations
+
+- Evitez de changer les routes afin d'éviter les soucis avec le script Ajax.  
+- Si la navbar se duplique, veuillez actualiser la page **F5**, et faire comme s'il ne s'était rien passé.  
+- Pour actualiser la page, cliquez sur le logo **YouCard** dans la navbar ou encore aller dans la route **/home** ou **/**.  
+- Si vous vous retrouvez dans une autre route que **/home** ou **/**, suivez la procedure d'actualisation.
+- J'ai fais en sorte que les éléments des listes soient cliquable, afin de naviguer plus simplement.      
+- N'oubliez pas de masquer la barre de Symfony, en cliquant sur la croix en bas à droite.
+
+### Avertisement
+
+Lorsque l'on supprime une **Faction**, __toute les cartes de la factions seront supprimé.  
+Lorsqu'on modifie une carte, si on ajoute de nouvelle image, il gardera l'ancienne.
+
+---
+
+##### Note :
+Malheuresement je n'ai pas pu me pencher d'avantage sur le front, dû au manque de temps. 
+Etant donnée que je suis en stage et que je travail le soir.
+
+Je suis tout de même ouvert à toute suggestion d'amelioration et de correction dans les commentaires.
+
+Merci.  
+

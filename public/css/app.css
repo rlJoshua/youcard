@@ -1,3 +1,8 @@
+html, body, #home_page{
+    background-color: #154360!important;
+    color: #F0F3F4;
+}
+
 .list-card {
     display: flex;
     width: 100%;
@@ -23,16 +28,20 @@
     max-height: 400px;
     border-radius: 20px;
     border: 1px solid black;
-    box-shadow: 0 0 10px #ccc;
     text-align: center;
-    color: white;
+    color: #F0F3F4;
     margin: 30px;
     flex: 1 1 300px;
+    text-decoration: none!important;
+}
+
+.card:hover{
+    text-decoration: none;
 }
 
 .cardHeader {
     height: 50px;
-    color: #222222;
+    color: #222222!important;
 }
 
 .cardHeader span {
@@ -59,20 +68,20 @@
 }
 
 .cardNumber {
-    background-color: white;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     text-align: center;
     line-height: 50px;
     float: left;
+    color: white!important;
 }
 
 .list-choice-card {
     width: 100%;
     display: flex;
     background-color: rgba(20, 20, 20, 0.9);
-    color: #DDDDDD;
+    color:  #F0F3F4;
     flex-wrap: nowrap;
     overflow-x: auto;
 }
@@ -92,6 +101,11 @@
     width: 100px;
     height: 100px;
     margin: 20px;
+}
+
+.link , .link:hover{
+    color: #F0F3F4;
+    text-decoration: none;
 }
 
 

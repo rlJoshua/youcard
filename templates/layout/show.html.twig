@@ -1,0 +1,52 @@
+<title>test</title>
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+{% block body %}
+
+    {% if card is defined %}
+        <div class="list-card example-wrapper">
+            <div class="card" style="{{ card.rarety.color }};
+                    background: linear-gradient(148deg, {{ card.rarety.color }} 0%,
+                    #FFFFFF 35%, #FFFFFF 42%, {{ card.rarety.color }} 84%);">
+                <div class="cardHeader">
+                    <span>{{ card.name }}</span>
+                    <span>({{ card.faction.name }})</span>
+                </div>
+                <div class="cardImage">
+                    {% if img is null or img is empty %}
+                        <img src="{{ asset('img/empty.jpg') }}" alt="empty">
+                    {% else %}
+                        <img src="{{ asset('uploads/img/') ~ img }}" alt="image card">
+                    {% endif %}
+                </div>
+                <div class="cardFooter">
+                    <div class="cardNumber" style="background-color:#B03A2E">{{ card.attack }}</div>
+                    <div class="cardNumber" style="background-color:#2E86C1">{{ card.mana }}</div>
+                    <div class="cardNumber" style="background-color:#229954">{{card.health}}</div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if faction is defined %}
+        <div class="example-wrapper">
+            <h1>{{ title }}</h1>
+                <div>
+                   {{ faction.id }} : {{ faction.name }}
+                </div>
+        </div>
+    {% endif %}
+
+    <div class="example-wrapper">
+        {{ form_start(form, { 'action': path(app.request.attributes.get("_route"), {id: id}), "method" : "POST", "enctype": "multipart/form-data"}) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+
+
+
+{% endblock %}

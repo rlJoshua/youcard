@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Card;
 use App\Entity\Faction;
 use App\Entity\Rarety;
+use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -33,6 +34,7 @@ class CardType extends AbstractType
                 "choice_label" => "name"
             ])
             ->add("image", FileType::class,[
+                "data_class" => null,
                 "constraints" => [
                     new File([
                         "mimeTypes" => "image/*",

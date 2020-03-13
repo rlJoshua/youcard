@@ -17,13 +17,13 @@ class DeckCard
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Card", inversedBy="deckCards", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Card", inversedBy="deckCards")
      * @ORM\JoinColumn(nullable=true)
      */
     private $card;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Deck", inversedBy="deckCards", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Deck", inversedBy="deckCards")
      * @ORM\JoinColumn(nullable=true)
      */
     private $deck;

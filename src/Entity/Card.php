@@ -55,7 +55,7 @@ class Card
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $image;
 
@@ -157,7 +157,7 @@ class Card
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 

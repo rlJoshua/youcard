@@ -10,7 +10,7 @@
             <h1>{{ title }}</h1>
             <div class="list-card">
                 {% for card in cards %}
-                    <div class="card" style="{{ card.rarety.color }};
+                    <a href="{{ path("update_card", {id: card.id}) }}" class="card" style="{{ card.rarety.color }};
                            background: linear-gradient(148deg, {{ card.rarety.color }} 0%,
                             #FFFFFF 35%, #FFFFFF 42%, {{ card.rarety.color }} 84%);">
                         <div class="cardHeader">
@@ -29,7 +29,7 @@
                             <div class="cardNumber" style="background-color:#2E86C1">{{ card.mana }}</div>
                             <div class="cardNumber" style="background-color:#229954">{{card.health}}</div>
                         </div>
-                    </div>
+                    </a>
                 {% endfor %}
             </div>
         {% endif %}
@@ -38,7 +38,9 @@
             <div class="example-wrapper">
                 <h1>{{ title }}</h1>
                 {% for faction in factions %}
-                    <li>{{ faction.name }}</li>
+                    <li>
+                        <a class="link" href="{{ path("update_faction", {id: faction.id}) }}">{{ faction.name }}</a>
+                    </li>
                 {% endfor %}
             </div>
         {% endif %}
@@ -47,7 +49,7 @@
             <div class="example-wrapper zone">
                 <h1>{{ title }}</h1>
                 {% for deck in decks %}
-                    <li><a class="link" href="{{ path('get_deck', {id: deck.id}) }}">{{ deck.name }}</a> </li>
+                    <li><a class="link" href="{{ path('get_deck', {id: deck.id}) }}">{{ deck.name }}</a></li>
                 {% endfor %}
             </div>
         {% endif %}

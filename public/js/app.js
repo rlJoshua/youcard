@@ -10,7 +10,6 @@ $(document).ready(function () {
     $("#home_page").on("submit", "form", function (e) {
         e.preventDefault();
         const form = $(this);
-
         $.ajax({
             type: "POST",
             url: form.attr('action'),
