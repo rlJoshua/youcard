@@ -12,35 +12,42 @@
         {{ form_start(form, { 'action': path(app.request.attributes.get("_route")), "method" : "POST", "enctype": "multipart/form-data"}) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
-
         <br />
         <br />
         <br />
         <br />
-
         <h1>{{ title }}</h1>
-
         <ul>
             {% if cards is defined %}
                 {% for card in cards %}
-                    <li>{{ card.name }} | PV: {{ card.health }} - ATQ : {{ card.attack }} - Mana : {{ card.mana }} | Faction : {{ card.faction.name }}</li>
+                    <li>
+                        {{ card.name }} | PV: {{ card.health }} - ATQ : {{ card.attack }} - Mana : {{ card.mana }} | Faction : {{ card.faction.name }}
+                        <a style="color: #2E86C1" href="{{ path("update_card", {id: card.id}) }}">Modifier</a>
+                        <a style="color: #C82829" href="{{ path("remove_card", {id: card.id}) }}">Supprimer</a>
+                    </li>
                 {% endfor %}
             {% endif %}
 
             {% if factions is defined %}
                 {% for faction in factions %}
-                    <li>{{ faction.name }}</li>
+                    <li>
+                        {{ faction.name }}
+                        <a href="{{ path("update_faction", {id: faction.id}) }}" style="color: #2E86C1">Modifier</a>
+                        <a href="{{ path("remove_faction", {id: faction.id}) }}" style="color: #C82829">Supprimer</a>
+                    </li>
                 {% endfor %}
             {% endif %}
 
             {% if decks is defined %}
                 {% for deck in decks %}
-                    <li>{{ deck.name }}</li>
+                    <li>
+                        <a class="link" href="{{ path('get_deck', {id: deck.id}) }}">{{ deck.name }}</a>
+                        <a href="{{ path("update_deck", {id: deck.id}) }}" style="color: #2E86C1">Modifier</a>
+                        <a href="{{ path("remove_deck", {id: deck.id}) }}" style="color: #C82829">Supprimer</a>
+                    </li>
+
                 {% endfor %}
             {% endif %}
-
         </ul>
-
     </div>
-
 {% endblock %}

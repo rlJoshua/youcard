@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -57,11 +58,17 @@ class User implements UserInterface
      */
     private $createdCard;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Deck", mappedBy="user")
+     */
+    private $decks;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->roles = ["ROLE_USER"];
         $this->createdCard = new ArrayCollection();
+        $this->decks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -200,6 +207,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($card->getCreator() === $this) {
                 $card->setCreator(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Deck[]
+     */
+    public function getDecks(): Collection
+    {
+        return $this->decks;
+    }
+
+    public function addDeck(Deck $deck): self
+    {
+        if (!$this->decks->contains($deck)) {
+            $this->decks[] = $deck;
+            $deck->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDeck(Deck $deck): self
+    {
+        if ($this->decks->contains($deck)) {
+            $this->decks->removeElement($deck);
+            // set the owning side to null (unless already changed)
+            if ($deck->getUser() === $this) {
+                $deck->setUser(null);
             }
         }
 

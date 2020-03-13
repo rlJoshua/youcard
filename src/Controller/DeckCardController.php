@@ -94,7 +94,7 @@ class DeckCardController extends AbstractController
      * @param int $id
      * @return Response
      */
-    public function removeCard(int $id){
+    public function removeDeckCard(int $id){
 
         $deckcard = $this->deckCardRepository->find($id);
 
