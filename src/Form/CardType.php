@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Card;
 use App\Entity\Faction;
-use App\Entity\Rarety;
+use App\Entity\Rarity;
 use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -29,8 +29,8 @@ class CardType extends AbstractType
                 "class" => Faction::class,
                 "choice_label" => "name"
             ])
-            ->add('rarety',EntityType::class,[
-                "class" => Rarety::class,
+            ->add('rarity',EntityType::class,[
+                "class" => Rarity::class,
                 "choice_label" => "name"
             ])
             ->add("image", FileType::class,[

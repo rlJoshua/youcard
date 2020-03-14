@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\RaretyRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RarityRepository")
  */
-class Rarety
+class Rarity
 {
     /**
      * @ORM\Id()
@@ -80,7 +80,7 @@ class Rarety
     {
         if (!$this->cards->contains($faction)) {
             $this->cards[] = $faction;
-            $faction->setRarety($this);
+            $faction->setRarity($this);
         }
 
         return $this;
@@ -91,8 +91,8 @@ class Rarety
         if ($this->cards->contains($faction)) {
             $this->cards->removeElement($faction);
             // set the owning side to null (unless already changed)
-            if ($faction->getRarety() === $this) {
-                $faction->setRarety(null);
+            if ($faction->getRarity() === $this) {
+                $faction->setRarity(null);
             }
         }
 

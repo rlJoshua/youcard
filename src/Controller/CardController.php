@@ -30,13 +30,14 @@ class CardController extends AbstractController
     /**
      * @Route("/card", name="list_cards")
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $cards = $this->cardRepository->findAll();
 
         return $this->render('layout/index.html.twig', [
             'cards' => $cards,
-            "title" => "Cards"
+            "title" => "Cartes"
         ]);
     }
 

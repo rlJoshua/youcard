@@ -24,6 +24,9 @@
             <li  class="nav-item active">
                 <a class="nav-link" style="color: white" href="{{ path('add_deck') }}">Ajouter un Deck</a>
             </li>
+            <li id="export_card" class="nav-item active">
+                <a class="nav-link" style="color: white" href="{{ path('export_cards') }}">Exporter les cartes</a>
+            </li>
         </ul>
         <span style="color: white" class="navbar-text">
             {% if app.user %}
