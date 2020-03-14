@@ -9,9 +9,9 @@
 
     {% if card is defined %}
         <div class="list-card example-wrapper">
-            <div class="card" style="{{ card.rarety.color }};
-                    background: linear-gradient(148deg, {{ card.rarety.color }} 0%,
-                    #FFFFFF 35%, #FFFFFF 42%, {{ card.rarety.color }} 84%);">
+            <div class="card" style="{{ card.rarity.color }};
+                    background: linear-gradient(148deg, {{ card.rarity.color }} 0%,
+                    #FFFFFF 35%, #FFFFFF 42%, {{ card.rarity.color }} 84%);">
                 <div class="cardHeader">
                     <span>{{ card.name }}</span>
                     <span>({{ card.faction.name }})</span>

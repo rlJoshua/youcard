@@ -11,9 +11,9 @@
             {% if deckcards is defined %}
                 {% for deckcard in deckcards %}
                     <a href="{{ path("remove_deckcard", {id: deckcard.id}) }}">
-                        <div class="card" style="{{ deckcard.card.rarety.color }};
-                                background: linear-gradient(148deg, {{ deckcard.card.rarety.color }} 0%,
-                                #FFFFFF 35%, #FFFFFF 42%, {{ deckcard.card.rarety.color }} 84%);">
+                        <div class="card" style="{{ deckcard.card.rarity.color }};
+                                background: linear-gradient(148deg, {{ deckcard.card.rarity.color }} 0%,
+                                #FFFFFF 35%, #FFFFFF 42%, {{ deckcard.card.rarity.color }} 84%);">
                             <div class="cardHeader">
                                 <span>{{ deckcard.card.name }}</span>
                                 <span>({{ deckcard.card.faction.name }})</span>

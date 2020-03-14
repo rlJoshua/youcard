@@ -5,6 +5,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -65,10 +69,10 @@ class Card
     private $deckCards;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Rarety", inversedBy="cards")
+     * @ORM\ManyToOne(targetEntity="Rarity", inversedBy="cards")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $rarety;
+    private $rarity;
 
     public function __construct()
     {
@@ -195,15 +199,30 @@ class Card
         return $this;
     }
 
-    public function getRarety(): ?Rarety
+    public function getRarity(): ?Rarity
     {
-        return $this->rarety;
+        return $this->rarity;
     }
 
-    public function setRarety(?Rarety $rarety): self
+    public function setRarity(?Rarity $rarity): self
     {
-        $this->rarety = $rarety;
+        $this->rarity = $rarity;
 
         return $this;
+    }
+
+    public function arrayExport(){
+
+        return array(
+            "name" => $this->getName(),
+            "health" => $this->getHealth(),
+            "mana" => $this->getMana(),
+            "attack" => $this->getAttack(),
+            "image" => $this->getImage(),
+            "rarity" => $this->getRarity()->getName(),
+            "rarityColor" => $this->getRarity()->getColor(),
+            "faction" => $this->getFaction()->getName(),
+            "user" => $this->getCreator()->getEmail()
+        );
     }
 }

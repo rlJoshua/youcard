@@ -1,4 +1,5 @@
 # YouCard
+
 Projet de gestion de cartes à collectionner. Dans le carde d'une formation au framework Symfony Avancée.  
 Le but était de faire le site en **One Page** grâce au JQuery.
 
@@ -10,16 +11,20 @@ Le projet à été réalisé avec :
 - Bootstrap
 - MySQL
 
+
 ### Installation
 
 - Configurer le fichier **.env**
 - Créer un base de donnée au nom de **youcard**
 - Mettre à jour la base de donnée avec le script **youcard.sql**
 
+
 ### Accès user
 
 - E-mail : joshua@gmail.com
 - Password : skywalk
+ 
+ ---
  
 ### Améliorations
 
@@ -27,8 +32,11 @@ Le projet à été réalisé avec :
 - Les images peuvent être vide
 - Affichage de la liste en dessous du formulaire 
 - Ajout de confirmation de **Password**
-- Rareté de **Card** avec les changemens de couleurs selon ça rareté
-- Disposition de l'ajout des cartes dans un deck
+- Rareté de **Card** avec les changements de couleurs selon ça rareté
+- Disposition de l'ajout des cartes dans un deck 
+- Suppression des cartes dans un deck par un clique
+- Modification et Suppression des entitées **Card**, **Deck** & **Faction**
+- Les images exportées sont en base64
 
 
 ### Informations
@@ -40,18 +48,19 @@ Le projet à été réalisé avec :
 - J'ai fais en sorte que les éléments des listes soient cliquable, afin de naviguer plus simplement.      
 - N'oubliez pas de masquer la barre de Symfony, en cliquant sur la croix en bas à droite.
 
-### Avertisement
 
-Lorsque l'on supprime une **Faction**, __toute les cartes de la factions seront supprimé.  
-Lorsqu'on modifie une carte, si on ajoute de nouvelle image, il gardera l'ancienne.
+### Avertissement
+
+Lorsque l'on supprime une **Faction**, **toute les cartes de la factions seront supprimé**.  
+Lorsde la modification d'une carte, si on n'ajoute pas de nouvelle image, il gardera l'ancienne.
 
 ---
 
-##### Note :
+#### Note :
+
 Malheuresement je n'ai pas pu me pencher d'avantage sur le front, dû au manque de temps. 
 Etant donnée que je suis en stage et que je travail le soir.
 
 Je suis tout de même ouvert à toute suggestion d'amelioration et de correction dans les commentaires.
 
 Merci.  
-

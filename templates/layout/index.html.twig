@@ -10,9 +10,9 @@
             <h1>{{ title }}</h1>
             <div class="list-card">
                 {% for card in cards %}
-                    <a href="{{ path("update_card", {id: card.id}) }}" class="card" style="{{ card.rarety.color }};
-                           background: linear-gradient(148deg, {{ card.rarety.color }} 0%,
-                            #FFFFFF 35%, #FFFFFF 42%, {{ card.rarety.color }} 84%);">
+                    <a href="{{ path("update_card", {id: card.id}) }}" class="card" style="{{ card.rarity.color }};
+                           background: linear-gradient(148deg, {{ card.rarity.color }} 0%,
+                            #FFFFFF 35%, #FFFFFF 42%, {{ card.rarity.color }} 84%);">
                         <div class="cardHeader">
                             <span>{{ card.name }}</span>
                             <span>({{ card.faction.name }})</span>

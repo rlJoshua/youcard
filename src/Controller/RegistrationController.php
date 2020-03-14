@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
             // do anything else you need here, like send an email
             $this->addFlash('notification', "Inscription effectué !");
 
-            return $this->redirectToRoute('list_users');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('registration/register.html.twig', [

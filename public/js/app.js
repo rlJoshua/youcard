@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     $('.nav-link').click(function(e) {
+
         e.preventDefault();
         $('.nav-link').removeClass("select");
         $(this).addClass("select");
@@ -26,5 +27,27 @@ $(document).ready(function () {
         e.preventDefault();
         $("#home_page").load($(this).attr("href"));
     });
+
+    $("#export_card").on("click", "a", function (e) {
+        e.preventDefault();
+        $("#home_page").empty();
+        $.ajax({
+            method: "GET",
+            xhrFields: {
+                responseType: "blob"
+            },
+            url: $(this).attr("href"),
+            success: function success(response) {
+
+                let falseButton = document.createElement("a");
+                falseButton.href = window.URL.createObjectURL(response);
+                falseButton.download = "export.csv";
+
+                document.body.append(falseButton);
+                falseButton.click();
+                falseButton.remove();
+            }
+        })
+    })
 
 });
