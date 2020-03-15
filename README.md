@@ -37,6 +37,7 @@ Le projet à été réalisé avec :
 - Suppression des cartes dans un deck par un clique
 - Modification et Suppression des entitées **Card**, **Deck** & **Faction**
 - Les images exportées sont en base64
+- Mise en place d'un Loader au chargement
 
 
 ### Informations

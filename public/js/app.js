@@ -1,15 +1,26 @@
 $(document).ready(function () {
 
-    $('.nav-link').click(function(e) {
+    // Initialization /home
+    $("#home_page").load($('.select').attr("href"), function () {
+        $("#loader").hide();
+    });
 
+    // Load on navbar click
+    $('.nav-link').on("click", function(e) {
+        $("#loader").show();
         e.preventDefault();
         $('.nav-link').removeClass("select");
         $(this).addClass("select");
-        $("#home_page").load($(this).attr("href"));
+        $("#home_page").load($(this).attr("href"), function () {
+            $("#loader").hide();
+        });
+
     });
 
+    // Load on submit
     $("#home_page").on("submit", "form", function (e) {
         e.preventDefault();
+        $("#loader").show();
         const form = $(this);
         $.ajax({
             type: "POST",
@@ -18,19 +29,27 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success : function success(response) {
-                $("#home_page").load($('.select').attr('href'));
+                $("#home_page").load($('.select').attr('href'), function () {
+                    $("#loader").hide();
+                });
             }
         })
     });
 
+    // Load on link click
     $('#home_page').on("click", "a", function(e) {
         e.preventDefault();
-        $("#home_page").load($(this).attr("href"));
+        $("#loader").show();
+        $("#home_page").load($(this).attr("href"), function () {
+            $("#loader").hide();
+        });
     });
 
+    // Load export
     $("#export_card").on("click", "a", function (e) {
         e.preventDefault();
-        $("#home_page").empty();
+        $("#loader").show();
+
         $.ajax({
             method: "GET",
             xhrFields: {
@@ -38,7 +57,7 @@ $(document).ready(function () {
             },
             url: $(this).attr("href"),
             success: function success(response) {
-
+                $("#home_page").empty();
                 let falseButton = document.createElement("a");
                 falseButton.href = window.URL.createObjectURL(response);
                 falseButton.download = "export.csv";
@@ -46,6 +65,7 @@ $(document).ready(function () {
                 document.body.append(falseButton);
                 falseButton.click();
                 falseButton.remove();
+                $("#loader").hide();
             }
         })
     })
