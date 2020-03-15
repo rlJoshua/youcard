@@ -106,9 +106,11 @@ class CardController extends AbstractController
         $card = $this->cardRepository->find($id);
 
         if (!empty($card->getImage())){
+
             $image = new File($this->getParameter('cards_folder')."/".$card->getImage());
         }
         else{
+
             $image = new File($this->getParameter('img_folder')."/empty.jpg");
         }
 

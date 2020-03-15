@@ -90,7 +90,7 @@ class DeckController extends AbstractController
      * @param int $id
      * @return RedirectResponse|Response
      */
-    public function updateFaction(Request $request, int $id){
+    public function updateDeck(Request $request, int $id){
 
         // Get all data form
         $deck = $this->deckRepository->find($id);

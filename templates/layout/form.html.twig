@@ -48,6 +48,20 @@
 
                 {% endfor %}
             {% endif %}
+
+            {% if rarities is defined %}
+                <div class="example-wrapper zone">
+                    <h1>{{ title }}</h1>
+                    {% for rarity in rarities %}
+                        <li class="list-rarity">
+                            <a class="link" href="{{ path('update_rarity', {id: rarity.id}) }}"> {{ rarity.name }} </a> -
+                            <div class="rarity-color" style="background: linear-gradient(148deg, {{ rarity.color }} 0%,
+                                    #FFFFFF 35%, #FFFFFF 40%, {{ rarity.color }} 84%);"> {{ rarity.color }} </div>
+                        </li>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
         </ul>
     </div>
 {% endblock %}

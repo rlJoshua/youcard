@@ -35,14 +35,14 @@ Le projet à été réalisé avec :
 - Rareté de **Card** avec les changements de couleurs selon ça rareté
 - Disposition de l'ajout des cartes dans un deck 
 - Suppression des cartes dans un deck par un clique
-- Modification et Suppression des entitées **Card**, **Deck** & **Faction**
+- Modification et Suppression des entitées **Card**, **Deck**, **Faction** & **Rareté**
 - Les images exportées sont en base64
 - Mise en place d'un Loader au chargement
 
 
 ### Informations
 
-- Evitez de changer les routes afin d'éviter les soucis avec le script Ajax.  
+- Evitez de changer les routes via la barre d'URL.  
 - Si la navbar se duplique, veuillez actualiser la page **F5**, et faire comme s'il ne s'était rien passé.  
 - Pour actualiser la page, cliquez sur le logo **YouCard** dans la navbar ou encore aller dans la route **/home** ou **/**.  
 - Si vous vous retrouvez dans une autre route que **/home** ou **/**, suivez la procedure d'actualisation.
@@ -53,7 +53,8 @@ Le projet à été réalisé avec :
 ### Avertissement
 
 Lorsque l'on supprime une **Faction**, **toute les cartes de la factions seront supprimé**.  
-Lorsde la modification d'une carte, si on n'ajoute pas de nouvelle image, il gardera l'ancienne.
+Lors de la modification d'une carte, si on n'ajoute pas de nouvelle image, il gardera l'ancienne.  
+La suppréssion de l'entité **Rarety** n'a pas été mis en place car une carte doit avoir une rareté. 
 
 ---
 

@@ -15,7 +15,7 @@ class FactionType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('add', SubmitType::class)
+            ->add('save', SubmitType::class)
         ;
     }
 
