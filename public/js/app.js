@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     // Initialization /home
     $("#home_page").load($('.select').attr("href"), function () {
+
         $("#loader").hide();
     });
 
@@ -49,7 +50,6 @@ $(document).ready(function () {
     $("#export_card").on("click", "a", function (e) {
         e.preventDefault();
         $("#loader").show();
-
         $.ajax({
             method: "GET",
             xhrFields: {
@@ -57,7 +57,7 @@ $(document).ready(function () {
             },
             url: $(this).attr("href"),
             success: function success(response) {
-                $("#home_page").empty();
+
                 let falseButton = document.createElement("a");
                 falseButton.href = window.URL.createObjectURL(response);
                 falseButton.download = "export.csv";
@@ -66,6 +66,10 @@ $(document).ready(function () {
                 falseButton.click();
                 falseButton.remove();
                 $("#loader").hide();
+                $("#home_page").empty();
+                $("#home_page").append("<div>Téléchargement éffectué !</div>");
+
+
             }
         })
     })
