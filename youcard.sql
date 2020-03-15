@@ -66,7 +66,7 @@ CREATE TABLE `deck` (
   PRIMARY KEY (`id`),
   KEY `IDX_4FAC3637A76ED395` (`user_id`),
   CONSTRAINT `FK_4FAC3637A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `deck` (
 
 LOCK TABLES `deck` WRITE;
 /*!40000 ALTER TABLE `deck` DISABLE KEYS */;
-INSERT INTO `deck` VALUES (8,'Best',1),(10,'Bad',1),(11,'cheval',2);
+INSERT INTO `deck` VALUES (8,'Best',1),(10,'Bad',1),(11,'cheval',2),(12,'Random',1);
 /*!40000 ALTER TABLE `deck` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +95,7 @@ CREATE TABLE `deck_card` (
   KEY `IDX_2AF3DCED111948DC` (`deck_id`),
   CONSTRAINT `FK_2AF3DCED111948DC` FOREIGN KEY (`deck_id`) REFERENCES `deck` (`id`),
   CONSTRAINT `FK_2AF3DCED4ACC9A20` FOREIGN KEY (`card_id`) REFERENCES `card` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +104,7 @@ CREATE TABLE `deck_card` (
 
 LOCK TABLES `deck_card` WRITE;
 /*!40000 ALTER TABLE `deck_card` DISABLE KEYS */;
-INSERT INTO `deck_card` VALUES (64,1,8),(66,1,8),(67,1,8),(68,1,8),(69,1,8),(70,1,8),(71,1,8),(72,1,8),(73,1,8),(74,1,8),(75,1,8),(88,5,10),(90,3,10),(91,2,10),(93,2,10),(94,2,10),(95,2,10),(96,2,10),(97,2,10),(98,2,10),(99,2,10),(100,2,10),(101,2,10),(102,2,10),(103,2,10),(104,2,10),(105,2,10),(106,16,10),(107,16,10),(108,16,10),(109,16,10),(110,18,11),(111,19,11),(112,1,8),(113,1,8),(114,1,8),(115,1,8),(116,1,8),(117,1,8),(118,1,8),(119,1,8),(120,1,8);
+INSERT INTO `deck_card` VALUES (66,1,8),(68,1,8),(69,1,8),(70,1,8),(71,1,8),(72,1,8),(73,1,8),(74,1,8),(75,1,8),(93,2,10),(94,2,10),(95,2,10),(96,2,10),(98,2,10),(99,2,10),(100,2,10),(101,2,10),(102,2,10),(103,2,10),(104,2,10),(105,2,10),(106,16,10),(107,16,10),(108,16,10),(109,16,10),(110,18,11),(111,19,11),(112,1,8),(113,1,8),(114,1,8),(115,1,8),(116,1,8),(117,1,8),(118,1,8),(119,1,8),(120,1,8),(121,6,12),(122,7,12),(123,9,12),(124,5,12),(125,4,12),(126,3,12),(127,2,12),(128,6,12),(129,9,12),(130,16,12),(131,17,12),(132,18,12),(133,19,12),(134,16,12),(135,6,12),(136,4,12),(137,5,12),(138,9,12),(139,7,12),(140,6,12),(141,1,8),(142,1,8),(143,1,8),(144,1,8),(145,1,8),(146,1,8);
 /*!40000 ALTER TABLE `deck_card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +119,7 @@ CREATE TABLE `faction` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,7 +167,7 @@ CREATE TABLE `rarity` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +176,7 @@ CREATE TABLE `rarity` (
 
 LOCK TABLES `rarity` WRITE;
 /*!40000 ALTER TABLE `rarity` DISABLE KEYS */;
-INSERT INTO `rarity` VALUES (1,'Gold','#FFD700'),(2,'Silver','#C0C0C0'),(3,'Copper','#B87333');
+INSERT INTO `rarity` VALUES (1,'Gold','#FFD700'),(2,'Silver','#C0C0C0'),(3,'Copper','#B87333'),(4,'Dark','#222222');
 /*!40000 ALTER TABLE `rarity` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-14 17:09:40
+-- Dump completed on 2020-03-15 22:42:16
