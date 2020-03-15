@@ -44,7 +44,7 @@ class CardType extends AbstractType
                 "required" => false
 
             ])
-            ->add('add', SubmitType::class)
+            ->add('save', SubmitType::class)
         ;
     }
 

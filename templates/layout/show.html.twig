@@ -9,6 +9,7 @@
 
     {% if card is defined %}
         <div class="list-card example-wrapper">
+            <h1>{{ card.name }}</h1>
             <div class="card" style="{{ card.rarity.color }};
                     background: linear-gradient(148deg, {{ card.rarity.color }} 0%,
                     #FFFFFF 35%, #FFFFFF 42%, {{ card.rarity.color }} 84%);">
@@ -34,10 +35,23 @@
 
     {% if faction is defined %}
         <div class="example-wrapper">
-            <h1>{{ title }}</h1>
-                <div>
-                   {{ faction.id }} : {{ faction.name }}
-                </div>
+            <h1>{{ faction.name }}</h1>
+        </div>
+    {% endif %}
+
+    {% if deck is defined %}
+        <div class="example-wrapper">
+            <h1>{{ deck.name }}</h1>
+        </div>
+    {% endif %}
+
+    {% if rarity is defined %}
+        <div class="example-wrapper zone">
+            <h1>{{ rarity.name }}</h1>
+            <div class="rarity-show">
+                <div class="rarity-color" style="background: linear-gradient(148deg, {{ rarity.color }} 0%,
+                        #FFFFFF 35%, #FFFFFF 42%, {{ rarity.color }} 84%); color: transparent !important;"> {{ rarity.color }} </div>
+            </div>
         </div>
     {% endif %}
 

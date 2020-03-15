@@ -65,9 +65,9 @@ $(document).ready(function () {
                 document.body.append(falseButton);
                 falseButton.click();
                 falseButton.remove();
-                $("#loader").hide();
-                $("#home_page").empty();
-                $("#home_page").append("<div>Téléchargement éffectué !</div>");
+                $("#home_page").load("/card", function () {
+                    $("#loader").hide();
+                })
 
 
             }
